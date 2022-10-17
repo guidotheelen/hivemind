@@ -16,6 +16,7 @@ dependencies:
   pixelarticons: ^0.4.0
   uuid: ^3.0.6
   equatable: ^2.0.5
+  segment_display: ^0.5.0
 
 dev_dependencies:
   flutter_test:

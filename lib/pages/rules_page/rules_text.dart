@@ -15,17 +15,17 @@ class Rules extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           Rule(
-            icon: Pixel.plus,
+            icon: Icons.thumb_up,
             title: 'Rule 1',
-            text: 'You may vote for any option you like.',
+            text: 'You may vote for one option you like.',
           ),
-          SizedBox(height: Sizes.m),
+          SizedBox(height: Sizes.xl),
           Rule(
-            icon: Pixel.minus,
+            icon: Icons.thumb_down,
             title: 'Rule 2',
-            text: 'You may vote for any option you like.',
+            text: 'You may vote for one option you don\'t like.',
           ),
-          SizedBox(height: Sizes.m),
+          SizedBox(height: Sizes.xl),
           Rule(
             icon: Pixel.clock,
             title: 'Rule 3',

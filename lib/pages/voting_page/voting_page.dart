@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hive_mind/pages/danger_page/danger_page.dart';
 import 'package:hive_mind/pages/main_page/main_page.dart';
-import 'package:hive_mind/pages/rules_page/rules_text.dart';
+import 'package:hive_mind/pages/voting_page/thumbs_left.dart';
 import 'package:hive_mind/widgets/top_banner.dart';
 import 'package:pixelarticons/pixel.dart';
 
@@ -25,9 +24,11 @@ class VotingPage extends StatelessWidget {
             icon: Pixel.check,
           ),
           Expanded(
-            child: ListView.builder(itemBuilder: (itemBuilder, index) {
-              return const Text('Voting');
-            }),
+            child: Column(
+              children: const [
+                ThumbsLeft(),
+              ],
+            ),
           ),
           const SizedBox(height: Sizes.l),
           const NavigationButtons(

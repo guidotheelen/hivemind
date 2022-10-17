@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_mind/pages/danger_page/danger_page.dart';
 import 'package:hive_mind/pages/voting_page/voting_page.dart';
 import 'package:hive_mind/widgets/navigation_buttons.dart';
 import 'package:pixelarticons/pixel.dart';
@@ -25,20 +26,31 @@ class MainPage extends StatelessWidget {
             icon: Pixel.eye,
           ),
           const SizedBox(height: Sizes.xl),
-          ElevatedButton(onPressed: () {}, child: const Text('Objectives')),
+          ElevatedButton(
+              onPressed: () {}, child: const Text('Your objectives')),
           const SizedBox(height: Sizes.xl),
           ElevatedButton(
               onPressed: () =>
                   Navigator.pushNamed(context, VotingPage.routeName),
               child: const Text('Voting')),
           const SizedBox(height: Sizes.xl),
-          const CountdownTimer(),
-          const SizedBox(height: Sizes.xl),
-          const SizedBox(height: Sizes.l),
-          const NavigationButtons(
-            previousPage: RulesPage.routeName,
+          ElevatedButton(
+            onPressed: () => Navigator.pushNamed(context, RulesPage.routeName),
+            child: const Text('Rules'),
           ),
-          const SizedBox(height: Sizes.l),
+          const SizedBox(height: Sizes.xl),
+          ElevatedButton(
+            onPressed: () => Navigator.pushNamed(context, DangerPage.routeName),
+            child: const Text('Disclaimer'),
+          ),
+          const SizedBox(height: Sizes.xl),
+          const Expanded(child: SizedBox()),
+          const FittedBox(
+            child: Padding(
+              padding: EdgeInsets.all(Sizes.xl),
+              child: CountdownTimer(),
+            ),
+          ),
         ],
       ),
     );

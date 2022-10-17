@@ -18,24 +18,20 @@ class Rule extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon),
+        Icon(icon, color: AppColors.dark),
         const SizedBox(width: Sizes.l),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  )),
+              Text(
+                title,
+                style: TextStyles.subtitleDark,
+              ),
               const SizedBox(height: Sizes.s),
               Text(
                 text,
-                style: const TextStyle(
-                  color: AppColors.dark,
-                  fontSize: 20,
-                ),
+                style: TextStyles.bodyDark,
               ),
             ],
           ),

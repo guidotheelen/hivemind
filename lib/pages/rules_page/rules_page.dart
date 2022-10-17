@@ -30,7 +30,6 @@ class RulesPage extends StatelessWidget {
           SizedBox(height: Sizes.l),
           NavigationButtons(
             previousPage: DangerPage.routeName,
-            nextPage: MainPage.routeName,
           ),
           SizedBox(height: Sizes.l),
         ],

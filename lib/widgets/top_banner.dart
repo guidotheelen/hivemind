@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class TopBanner extends StatelessWidget {
+  static const bannerHeight = 70.0;
+
   final String text;
   final IconData icon;
 
@@ -15,23 +17,27 @@ class TopBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8),
-      height: 70,
+      padding: const EdgeInsets.all(Sizes.s),
+      height: bannerHeight,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          const SizedBox(width: Sizes.m),
           Text(
             text,
-            style: const TextStyle(
-              color: AppColors.light,
-              fontSize: 20,
-            ),
+            style: TextStyles.titleLight,
           ),
-          const SizedBox(width: Sizes.s),
+          const SizedBox(width: Sizes.m),
           Icon(
             icon,
             color: AppColors.light,
           ),
+          const Expanded(child: SizedBox()),
+          const Icon(
+            Icons.menu,
+            color: AppColors.light,
+          ),
+          const SizedBox(width: Sizes.m),
         ],
       ),
     );

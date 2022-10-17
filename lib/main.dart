@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hive_mind/pages/danger_page/danger_page.dart';
+import 'package:hive_mind/pages/main_page/main_page.dart';
 import 'package:hive_mind/routes.dart';
 import 'package:hive_mind/theme.dart';
 
@@ -14,7 +14,7 @@ class HiveMindApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Hive Mind',
-      home: const DangerPage(),
+      home: const MainPage(),
       theme: appThemeData,
       routes: routes,
     );

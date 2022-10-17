@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:segment_display/segment_display.dart';
 
 import '../constants.dart';
 
@@ -19,22 +20,15 @@ class _CountdownTimerState extends State<CountdownTimer> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(Sizes.xl),
-          child: FittedBox(
-            child: Text(
-              timeLeft,
-              style: const TextStyle(
-                fontSize: 30,
-                color: AppColors.dark,
-              ),
-            ),
-          ),
-        ),
-      ],
+    return SevenSegmentDisplay(
+      value: timeLeft,
+      size: Sizes.s,
+      characterSpacing: Sizes.m,
+      backgroundColor: AppColors.dark,
+      segmentStyle: DefaultSegmentStyle(
+        enabledColor: AppColors.light,
+        disabledColor: AppColors.medium.withOpacity(0.2),
+      ),
     );
   }
 }
