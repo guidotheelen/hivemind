@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+            "name": "Flutter",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "chrome",
+            // "program": "test/",
+            // "flutterMode": "profile",
+        }
+    ]
+}
