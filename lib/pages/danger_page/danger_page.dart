@@ -22,14 +22,9 @@ class DangerPage extends StatelessWidget {
         children: const [
           TopBanner(
             text: 'BEWARE',
-            icon: Pixel.alert,
           ),
           Expanded(
             child: DangerText(),
-          ),
-          SizedBox(height: Sizes.l),
-          NavigationButtons(
-            previousPage: MainPage.routeName,
           ),
           SizedBox(height: Sizes.l),
         ],

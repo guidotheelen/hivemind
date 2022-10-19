@@ -46,6 +46,7 @@ abstract class AppDecorations {
     border: Border.all(
       color: AppColors.light,
       width: 1,
+      strokeAlign: StrokeAlign.center,
     ),
   );
 }

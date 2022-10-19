@@ -8,9 +8,7 @@ final appThemeData = ThemeData(
     style: ElevatedButton.styleFrom(
       foregroundColor: AppColors.white,
       backgroundColor: AppColors.medium,
-      shape: BeveledRectangleBorder(
-        borderRadius: BorderRadius.circular(Sizes.s),
-      ),
+      shape: const ContinuousRectangleBorder(),
     ),
   ),
 );

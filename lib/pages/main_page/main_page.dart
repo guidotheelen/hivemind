@@ -23,7 +23,7 @@ class MainPage extends StatelessWidget {
         children: [
           const TopBanner(
             text: 'HIVE MIND',
-            icon: Pixel.eye,
+            showBackButton: false,
           ),
           const SizedBox(height: Sizes.xl),
           ElevatedButton(

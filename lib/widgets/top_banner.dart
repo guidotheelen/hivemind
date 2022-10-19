@@ -1,43 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:pixelarticons/pixel.dart';
 
 import '../constants.dart';
 
 class TopBanner extends StatelessWidget {
-  static const bannerHeight = 70.0;
+  static const bannerHeight = 60.0;
 
   final String text;
-  final IconData icon;
+  final bool showBackButton;
 
   const TopBanner({
     super.key,
     required this.text,
-    required this.icon,
+    this.showBackButton = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: AppColors.medium,
       padding: const EdgeInsets.all(Sizes.s),
       height: bannerHeight,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          if (showBackButton) ...[
+            const SizedBox(width: Sizes.m),
+            IconButton(
+              icon: const Icon(Pixel.chevronleft),
+              color: AppColors.light,
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
           const SizedBox(width: Sizes.m),
           Text(
             text,
             style: TextStyles.titleLight,
           ),
-          const SizedBox(width: Sizes.m),
-          Icon(
-            icon,
-            color: AppColors.light,
-          ),
-          const Expanded(child: SizedBox()),
-          const Icon(
-            Icons.menu,
-            color: AppColors.light,
-          ),
-          const SizedBox(width: Sizes.m),
         ],
       ),
     );

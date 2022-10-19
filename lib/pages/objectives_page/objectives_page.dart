@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hive_mind/pages/main_page/main_page.dart';
-import 'package:hive_mind/pages/voting_page/thumbs_left.dart';
-import 'package:hive_mind/widgets/top_banner.dart';
-import 'package:pixelarticons/pixel.dart';
 
+import '../voting_page/votes_left.dart';
+import '../../widgets/top_banner.dart';
 import '../../constants.dart';
-import '../../widgets/navigation_buttons.dart';
 
 class ObjectivesPage extends StatelessWidget {
   static const routeName = '/objectives';
@@ -21,18 +18,13 @@ class ObjectivesPage extends StatelessWidget {
         children: [
           const TopBanner(
             text: 'YOUR OBJECTIVES',
-            icon: Pixel.file,
           ),
           Expanded(
             child: Column(
               children: const [
-                ThumbsLeft(),
+                VotesLeft(),
               ],
             ),
-          ),
-          const SizedBox(height: Sizes.l),
-          const NavigationButtons(
-            previousPage: MainPage.routeName,
           ),
           const SizedBox(height: Sizes.l),
         ],
