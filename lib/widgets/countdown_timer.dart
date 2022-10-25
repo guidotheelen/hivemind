@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:segment_display/segment_display.dart';
 
@@ -11,11 +13,14 @@ class CountdownTimer extends StatefulWidget {
 }
 
 class _CountdownTimerState extends State<CountdownTimer> {
-  var timeLeft = '11:35:15';
+  final DateTime endOfTimer = DateTime.now().add(const Duration(hours: 1));
+
+  var timeLeft = '--:--:--';
 
   @override
   void initState() {
     super.initState();
+    _startTimer();
   }
 
   @override
@@ -30,5 +35,21 @@ class _CountdownTimerState extends State<CountdownTimer> {
         disabledColor: AppColors.medium.withOpacity(0.2),
       ),
     );
+  }
+
+  void _startTimer() {
+    const halfSec = Duration(milliseconds: 500);
+    Timer.periodic(halfSec, (timer) {
+      if (DateTime.now().isAfter(endOfTimer)) {
+        timer.cancel();
+      } else {
+        final difference = endOfTimer.difference(DateTime.now());
+        setState(() {
+          timeLeft = '${difference.inHours.toString().padLeft(2, '0')}:'
+              '${(difference.inMinutes % 60).toString().padLeft(2, '0')}:'
+              '${(difference.inSeconds % 60).toString().padLeft(2, '0')}';
+        });
+      }
+    });
   }
 }

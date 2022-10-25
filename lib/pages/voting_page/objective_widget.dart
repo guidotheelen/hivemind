@@ -8,18 +8,15 @@ import 'vote_buttons.dart';
 
 class ObjectiveWidget extends StatelessWidget {
   final Objective objective;
-  final VoidCallback onVoteUp;
-  final VoidCallback onVoteDown;
 
   const ObjectiveWidget({
     super.key,
     required this.objective,
-    required this.onVoteUp,
-    required this.onVoteDown,
   });
 
   @override
   Widget build(BuildContext context) {
+    final logic = context.watch<VotingLogic>();
     final upvote = context.select(
       (VotingLogic votingLogic) => votingLogic.upvote,
     );
@@ -56,8 +53,8 @@ class ObjectiveWidget extends StatelessWidget {
             hasUpvote: objective == upvote,
             hasDownvote: objective == downvote,
             votes: objective.upvotes - objective.downvotes,
-            onVoteUp: onVoteUp,
-            onVoteDown: onVoteDown,
+            onVoteUp: () => logic.toggleVote(objective),
+            onVoteDown: () => logic.toggleVote(objective, false),
           ),
         ],
       ),

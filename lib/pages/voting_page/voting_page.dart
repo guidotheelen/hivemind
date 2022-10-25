@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hive_mind/pages/voting_page/available_objectives.dart';
 import 'package:hive_mind/pages/voting_page/voting_logic.dart';
 import 'package:provider/provider.dart';
 
+import 'current_votes.dart';
+import 'most_votes.dart';
 import 'votes_left.dart';
-import 'objective_widget.dart';
 import '../../widgets/countdown_timer.dart';
 import '../../widgets/top_banner.dart';
 import '../../constants.dart';
@@ -47,84 +49,11 @@ class VotingPage extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: Sizes.l),
-                    const Text(
-                      'Most votes',
-                      style: TextStyles.subtitleLight,
-                    ),
+                    MostVotes(logic: logic),
                     const SizedBox(height: Sizes.l),
-                    logic.objectives.isNotEmpty
-                        ? ObjectiveWidget(
-                            objective: logic.mostPopularObjective!,
-                            onVoteUp: () {},
-                            onVoteDown: () {},
-                          )
-                        : Container(
-                            alignment: Alignment.center,
-                            height: Sizes.xl * 2,
-                            width: double.infinity,
-                            decoration: AppDecorations.boxDecoration,
-                            child: const Text(
-                              'No objectives yet',
-                              style: TextStyles.subtitleLight,
-                            ),
-                          ),
+                    CurrentVotes(logic: logic),
                     const SizedBox(height: Sizes.l),
-                    const Text(
-                      'Your current votes',
-                      style: TextStyles.subtitleLight,
-                    ),
-                    const SizedBox(height: Sizes.l),
-                    if (logic.hasUpvote)
-                      ObjectiveWidget(
-                        objective: logic.upvote!,
-                        onVoteUp: () {},
-                        onVoteDown: () {},
-                      )
-                    else
-                      Container(
-                        alignment: Alignment.center,
-                        height: Sizes.xl * 3 + 2,
-                        width: double.infinity,
-                        decoration: AppDecorations.boxDecoration,
-                        child: const Text(
-                          'No upvote selected',
-                          style: TextStyles.subtitleLight,
-                        ),
-                      ),
-                    const SizedBox(height: Sizes.m),
-                    if (logic.hasDownvote)
-                      ObjectiveWidget(
-                        objective: logic.downvote!,
-                        onVoteUp: () {},
-                        onVoteDown: () {},
-                      )
-                    else
-                      Container(
-                        alignment: Alignment.center,
-                        height: Sizes.xl * 3 + 2,
-                        width: double.infinity,
-                        decoration: AppDecorations.boxDecoration,
-                        child: const Text(
-                          'No downvote selected',
-                          style: TextStyles.subtitleLight,
-                        ),
-                      ),
-                    const SizedBox(height: Sizes.l),
-                    const Text(
-                      'Available objectives',
-                      style: TextStyles.subtitleLight,
-                    ),
-                    const SizedBox(height: Sizes.l),
-                    ...[
-                      for (final objective in logic.objectives) ...[
-                        ObjectiveWidget(
-                          objective: objective,
-                          onVoteUp: () => logic.switchUpvote(objective),
-                          onVoteDown: () => logic.switchDownvote(objective),
-                        ),
-                        const SizedBox(height: Sizes.m),
-                      ]
-                    ],
+                    AvailableObjectives(logic: logic),
                   ],
                 ),
               ),

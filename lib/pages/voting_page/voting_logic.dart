@@ -9,7 +9,7 @@ class VotingLogic extends ChangeNotifier {
   Objective? get downvote => _downvote;
   bool get hasUpvote => _upvote != null;
   bool get hasDownvote => _downvote != null;
-  Objective? get mostPopularObjective => objectives.reduce((value, element) =>
+  Objective? get topObjective => objectives.reduce((value, element) =>
       value.totalVotes > element.totalVotes ? value : element);
 
   final objectives = [
@@ -47,31 +47,26 @@ class VotingLogic extends ChangeNotifier {
     )
   ];
 
-  void switchUpvote(Objective objective) {
-    if (_upvote == objective) {
-      _upvote = null;
+  void toggleVote(Objective objective, [bool upvote = true]) {
+    if (upvote) {
+      if (_upvote == objective) {
+        _upvote = null;
+      } else {
+        _upvote = objective;
+        if (_downvote == objective) {
+          _downvote = null;
+        }
+      }
     } else {
-      _upvote = objective;
+      if (_downvote == objective) {
+        _downvote = null;
+      } else {
+        _downvote = objective;
+        if (_upvote == objective) {
+          _upvote = null;
+        }
+      }
     }
-    notifyListeners();
-  }
-
-  void unsetUpvote() {
-    _upvote = null;
-    notifyListeners();
-  }
-
-  void switchDownvote(Objective objective) {
-    if (_downvote == objective) {
-      _downvote = null;
-    } else {
-      _downvote = objective;
-    }
-    notifyListeners();
-  }
-
-  void unsetDownvote() {
-    _downvote = null;
     notifyListeners();
   }
 }
